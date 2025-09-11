@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import ProductSerializers
+from .filters import ProductFilter
 
 from .models import Product
 
@@ -9,8 +10,9 @@ from .models import Product
 
 @api_view(['GET'])
 def get_all_products(request): 
-    get_products = Product.objects.all()
-    serializers = ProductSerializers(get_products, many=True)
+    # get_products = Product.objects.all()
+    filter_set = ProductFilter(request.GET, queryset=Product.objects.all().order_by('id') )
+    serializers = ProductSerializers(filter_set.qs, many=True)
     print('api done')
     return Response({"products_res": serializers.data})
 
