@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Product
 
 class ProductSerializers(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
 
     class Meta:
         model = Product
