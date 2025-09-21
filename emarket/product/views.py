@@ -6,10 +6,10 @@ from .serializer import ProductSerializers
 from .filters import ProductFilter
 from .models import Product
 
-# Create your views here.
+
 
 @api_view(['GET' , 'POST'])
-def get_all_products(request): 
+def get_add_products(request): 
     queryset=Product.objects.all().order_by('id')
 
     if request.method =='GET':
