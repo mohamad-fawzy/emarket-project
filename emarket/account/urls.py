@@ -4,9 +4,12 @@ from . import views
 
 
 urlpatterns = [
-    path('register_andGet/', views.register_andGet, name='register' ),
-    path('all/', views.get_allUsers, name='register' ),
-    path('userInfo/', views.user_info, name='userinfo' ),
+    path('register/', views.register_user, name='register' ),
+    path('update/', views.update_user, name='register' ),
+    path('delete/', views.delete_user, name='register' ),
+
+    # path('all/', views.get_allUsers, name='register' ),
+    # path('info_user/', views.user_info, name='userinfo' ),
 
 
 ]

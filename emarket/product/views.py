@@ -1,14 +1,16 @@
 from django.shortcuts import get_object_or_404, render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view , permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ProductSerializers
 from .filters import ProductFilter
 from .models import Product
+from rest_framework.permissions import IsAuthenticated
 
 
 
 @api_view(['GET' , 'POST'])
+@permission_classes([IsAuthenticated])  
 def get_add_products(request): 
     queryset=Product.objects.all().order_by('id')
 
