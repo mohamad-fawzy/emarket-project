@@ -6,6 +6,7 @@ from .serializer import UserSerializer
 
 
 
+
 @api_view(['POST'])
 def register_user(request):
     serializers = UserSerializer(data = request.data)
