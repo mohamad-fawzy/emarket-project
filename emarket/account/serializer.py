@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .validators import UniqData
 
 
+
+
 class UserSerializer (serializers.ModelSerializer):
     class Meta:
         model = User
@@ -13,8 +15,9 @@ class UserSerializer (serializers.ModelSerializer):
         'email': {'required':True ,'validators': [UniqData]},
         'password': {'required':True ,'write_only': True, 'allow_blank':False, 'min_length':8 },
         'is_active': {'default': True}
-        
+
     }  
+        
     def create(self, validated_data):
         user = User.objects.create(
             first_name = validated_data['first_name'],
